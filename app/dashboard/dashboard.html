@@ -1,0 +1,72 @@
+<div class="container" ng-controller="dashCtrl as dashctrl">
+
+<!--<table st-table="alerts"  class="table table-striped">
+		<thead>
+		<tr>
+			<th st-sort="origin">Origin</th>
+			<th st-sort="destination">Destination</th>
+			<th st-sort="carrier">Carrier</th>
+			<th st-sort="compartment">Compartment</th>
+            <th st-sort="departureDate">Departure Date</th>
+            <th st-sort="departureTime">Departure Time</th>
+            <th st-sort="availableFare">Available Fare</th>
+            <th st-sort="previousAvailableFare">Previous Fare</th>
+            <th st-sort="differencetoEK">EK Difference</th>
+            <th st-sort="proposedFare">Proposed Fare</th>
+
+		</tr>
+		<tr>
+			<th colspan="2">
+				<input st-search="'origin'" placeholder="search for Origin" class="input-sm form-control" type="search"/>
+			</th>
+            <th colspan="2">
+				<input st-search="'destination'" placeholder="search for Destination" class="input-sm form-control" type="search"/>
+			</th>
+			<th colspan="6">
+				<input st-search placeholder="global search" class="input-sm form-control" type="search"/>
+			</th>
+		</tr>
+		</thead>
+		<tbody>
+
+		<tr ng-repeat="alertDetail in alerts">
+			<td>{{alertDetail.origin}}</td>
+			<td>{{alertDetail.destination}}</td>
+			<td>{{alertDetail.carrier}}</td>
+			<td>{{alertDetail.compartment}}</td>
+			<td>{{alertDetail.departureDate}}</td>
+            <td>{{alertDetail.departureTime}}</td>
+            <td>{{alertDetail.availableFare}}</td>
+            <td>{{alertDetail.previousAvailableFare}}</td>
+            <td>{{alertDetail.differencetoEK}}</td>
+            <td class="danger">{{alertDetail.proposedFare}}</td>
+		</tr>
+		</tbody>
+		<tfoot>
+			<tr>
+				<td colspan="10" class="text-center">
+					<div st-pagination="" st-items-by-page="itemsByPage" st-displayed-pages="7"></div>
+				</td>
+			</tr>
+		</tfoot>
+	</table>-->
+
+
+    <table ng-table="dashctrl.tableParams" class="table table-condensed table-bordered table-striped">
+        <tr ng-repeat="row in $data track by row.alertId">
+          <td data-title="'AlertId'" >{{row.alertId}}</td>
+          <td data-title="'Origin'" filter="{origin: 'text'}">{{row.origin}}</td>
+          <td data-title="'Destination'" filter="{destination: 'text'}">{{row.destination}}</td>
+          <td data-title="'carrier'" filter="{carrier: 'text'}">{{row.carrier}}</td>
+          <td data-title="'compartment'">{{row.compartment}}</td>
+          <td data-title="'departureDate'">{{row.departureDate}}</td>
+          <td data-title="'departureTime'">{{row.departureTime}}</td>
+          <td data-title="'availableFare'">{{row.availableFare}}</td>
+          <td data-title="'PreviousAvialableFare'">{{row.previousAvailableFare}}</td>
+          <td data-title="'DifferenceToEK'">{{row.differencetoEK}}</td>
+          <td data-title="'proposedFare'" class="danger" filter="{proposedFare: 'number'}">{{row.proposedFare}}</td>
+          <td><button class="btn btn-small"  ng-click="showPrompt($event)">Remarks</button></td>
+
+        </tr>
+    </table>
+</div>
